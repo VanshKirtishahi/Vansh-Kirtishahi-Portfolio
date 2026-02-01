@@ -1,0 +1,23 @@
+import path from "path";
+import { fileURLToPath } from "url";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// This allows us to use __dirname in an ES Module file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    open: true,
+  },
+  build: {
+    outDir: 'build',
+  }
+});
